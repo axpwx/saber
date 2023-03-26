@@ -24,7 +24,7 @@ class ResponseMap extends ArrayObject
         parent::__construct($responses);
     }
 
-    public function offsetSet($index, $newval)
+    public function offsetSet($index, $newval): void
     {
         if (!($newval instanceof Response)) {
             throw new InvalidArgumentException("Value must be instance of " . Response::class);

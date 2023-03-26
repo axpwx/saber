@@ -20,7 +20,7 @@ class RequestQueue extends SplQueue
 
     use InterceptorTrait;
 
-    public function enqueue($value)
+    public function enqueue(mixed $value): void
     {
         if (!($value instanceof Request)) {
             throw new InvalidArgumentException('Value must be instance of ' . Request::class);
