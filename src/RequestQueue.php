@@ -20,13 +20,13 @@ class RequestQueue extends SplQueue
 
     use InterceptorTrait;
 
-    public function enqueue($request)
+    public function enqueue($value)
     {
-        if (!($request instanceof Request)) {
+        if (!($value instanceof Request)) {
             throw new InvalidArgumentException('Value must be instance of ' . Request::class);
         }
         if ($this->getMaxConcurrency() > 0) {
-            if ($request->isWaiting()) {
+            if ($value->isWaiting()) {
                 throw new InvalidArgumentException("You can't enqueue a waiting request when using the max concurrency control!");
             }
         }
@@ -42,7 +42,7 @@ class RequestQueue extends SplQueue
          * After all the original concurrent requests in the queue for the first time are recved, the redirect requests recv again.
          * Otherwise, the concurrent request can be degraded to a queue request due to redirection, you can be tested and verified.
          */
-        parent::enqueue($request->withInQueue(true));
+        parent::enqueue($value->withInQueue(true));
     }
 
     public function getMaxConcurrency(): int

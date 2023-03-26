@@ -100,7 +100,7 @@ class Response extends \Swlib\Http\Response
         $e_level = $request->getExceptionReport();
         $exception = null;
         $should_be_thrown = false;
-        $status = ($this->statusCode / 100) % 10;
+        $status = intval($this->statusCode / 100) % 10;
         switch ($status) {
             case 2:
                 $this->success = true;

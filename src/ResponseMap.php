@@ -24,15 +24,15 @@ class ResponseMap extends ArrayObject
         parent::__construct($responses);
     }
 
-    public function offsetSet($index, $response)
+    public function offsetSet($index, $newval)
     {
-        if (!($response instanceof Response)) {
+        if (!($newval instanceof Response)) {
             throw new InvalidArgumentException("Value must be instance of " . Response::class);
         }
-        parent::offsetSet($index, $response);
-        $this->time = $this->time ?: max($this->time, $response->getTime());
-        $this->status_map[$index] = $response->getStatusCode();
-        $success = $response->getSuccess();
+        parent::offsetSet($index, $newval);
+        $this->time = $this->time ?: max($this->time, $newval->getTime());
+        $this->status_map[$index] = $newval->getStatusCode();
+        $success = $newval->getSuccess();
         $this->success_map[$index] = $success;
         $success ? $this->success_num++ : $this->error_num++;
     }

@@ -1,5 +1,5 @@
 {
-  "name": "swlib/saber",
+  "name": "axpwx/saber",
   "type": "library",
   "keywords": [
     "php",
@@ -25,12 +25,12 @@
     "issues": "https://github.com/swlib/saber/issues"
   },
   "require": {
-    "php": ">=7.1",
+    "php": ">=8.0",
     "swlib/http": "^1.0",
     "swlib/util": "^1.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "~7"
+    "phpunit/phpunit": "~9"
   },
   "autoload": {
     "classmap": [
